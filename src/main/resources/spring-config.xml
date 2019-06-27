@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="performer" class="ru.gsmirnov.springapp.models.Instrumentalist">
+        <constructor-arg ref="guitar"/>
+    </bean>
+
+    <bean id="guitar" class="ru.gsmirnov.springapp.models.Guitar"/>
+
+    <bean id="audience" class="ru.gsmirnov.springapp.aspects.AppLog"/>
+
+    <aop:config>
+        <aop:aspect ref="audience">
+
+            <aop:before pointcut="execution(* ru.gsmirnov.springapp.models.Instrumentalist.perform(..))" method="takeSeats"/>
+            <aop:before pointcut="execution(* ru.gsmirnov.springapp.models.Guitar.play(..))" method="takeSeats"/>
+            <aop:after pointcut="execution(* ru.gsmirnov.springapp.models.Guitar.play(..))" method="applause"/>
+            <aop:after pointcut="execution(* ru.gsmirnov.springapp.models.Instrumentalist.perform(..))" method="applause"/>
+        </aop:aspect>
+
+    </aop:config>
+
+</beans>
