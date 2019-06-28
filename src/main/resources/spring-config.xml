@@ -18,10 +18,10 @@
     <aop:config>
         <aop:aspect ref="audience">
 
-            <!--<aop:before pointcut="execution(* ru.gsmirnov.springapp.models.Instrumentalist.perform(..))" method="takeSeats"/>-->
-            <aop:before pointcut="execution(* ru.gsmirnov.springapp.models.Guitar.play(..))" method="takeSeats"/>
-            <aop:after pointcut="execution(* ru.gsmirnov.springapp.models.Guitar.play(..))" method="applause"/>
-            <!--<aop:after pointcut="execution(* ru.gsmirnov.springapp.models.Instrumentalist.perform(..))" method="applause"/>-->
+            <aop:before pointcut="execution(* ru.gsmirnov.springapp.models.Instrumentalist.perform(..))" method="takeSeats"/>
+            <!--<aop:before pointcut="execution(* ru.gsmirnov.springapp.models.Guitar.play(..))" method="takeSeats"/>-->
+            <!--<aop:after pointcut="execution(* ru.gsmirnov.springapp.models.Guitar.play(..))" method="applause"/>-->
+            <aop:after pointcut="execution(* ru.gsmirnov.springapp.models.Instrumentalist.perform(..))" method="applause"/>
         </aop:aspect>
 
     </aop:config>
